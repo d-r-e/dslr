@@ -9,4 +9,4 @@ if __name__ == "__main__":
         print("USAGE: ./describe.py [dataset].csv")
         exit(1)
     df = pd.read_csv(av[1])
-    print(df.__sizeof__)
+    print(df.size)
