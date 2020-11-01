@@ -1,11 +1,13 @@
 import numpy as np
 
+
 def count_(X):
     try:
         count = len(X[~np.isnan(X)])
         return count
-    except:
+    except Exception:
         return len(X)
+
 
 def mean_(X):
     total = 0
@@ -14,8 +16,9 @@ def mean_(X):
         for each in X:
             total += each
         return total / len(X)
-    except:
+    except Exception:
         return 0
+
 
 def std_(X):
     X = X[~np.isnan(X)]
@@ -24,6 +27,7 @@ def std_(X):
     for n in X:
         total = total + (n - m) ** 2
     return total
+
 
 def min_(X):
     val = X[0]
