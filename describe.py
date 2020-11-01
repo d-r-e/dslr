@@ -2,7 +2,7 @@
 
 from sys import argv as av
 import pandas as pd
-from dslr.describe import describe_
+from dslr.data import describe_
 
 
 if __name__ == "__main__":
