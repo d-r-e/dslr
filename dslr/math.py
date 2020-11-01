@@ -1,0 +1,27 @@
+import numpy as np
+
+def count_(X):
+    try:
+        count = len(X[~np.isnan(X)])
+        return count
+    except:
+        return len(X)
+
+def mean_(X):
+    total = 0
+    try:
+        X = X[~np.isnan(X)]
+        for each in X:
+            total += each
+        return total / len(X)
+    except:
+        return 0
+
+def std_(X):
+    
+    X = X[~np.isnan(X)]
+    m = mean_(X)
+    total = 0
+    for n in X:
+        total = total + (n - m) ** 2
+    return total
