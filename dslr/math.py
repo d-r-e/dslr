@@ -18,10 +18,16 @@ def mean_(X):
         return 0
 
 def std_(X):
-    
     X = X[~np.isnan(X)]
     m = mean_(X)
     total = 0
     for n in X:
         total = total + (n - m) ** 2
     return total
+
+def min_(X):
+    val = X[0]
+    for n in X:
+        if n < val:
+            val = n
+    return val
