@@ -2,7 +2,7 @@ NAME = dslr
 
 DSLR = dslr/data.py dslr/math.py
 
-NOTEBOOKS = histogram.ipynb  scatter_plot.ipynb
+NOTEBOOKS = histogram.ipynb  scatter_plot.ipynb pair_plot.ipynb
 
 $(NAME):
 
