@@ -23,5 +23,4 @@ if __name__ == "__main__":
         exit(1)
     df = pd.read_csv(av[1])
     describe_(df)
-    print(df.describe(include = [np.number]))
     exit(0)
