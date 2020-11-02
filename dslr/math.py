@@ -10,8 +10,8 @@ def count_(X):
 
 
 def mean_(X):
-    total = 0
     try:
+        total = 0
         X = X[~np.isnan(X)]
         for each in X:
             total += each
@@ -25,13 +25,37 @@ def std_(X):
     m = mean_(X)
     total = 0
     for n in X:
-        total = total + (n - m) ** 2
+        total += ((n - m) * (n - m))
+    total = (total / len(X)) ** (1/2)
     return total
 
 
 def min_(X):
+    X = X[~np.isnan(X)]
     val = X[0]
     for n in X:
         if n < val:
             val = n
     return val
+
+
+def max_(X):
+    X = X[~np.isnan(X)]
+    val = X[0]
+    for n in X:
+        if n > val:
+            val = n
+    return val
+
+
+def percentile_(p, X):
+    X = X[~np.isnan(X)]
+    X.sort()
+    length = (len(X) - 1) * p * 0.01
+    left = np.floor(length)
+    right = np.ceil(length)
+    if left == right:
+        return X[int(length)]
+    a = X[int(left)] * (right - length)
+    b = X[int(right)] * (length - left)
+    return a + b

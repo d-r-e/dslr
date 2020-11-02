@@ -14,10 +14,15 @@
 from sys import argv as av
 import pandas as pd
 from dslr.data import describe_
+from dslr.math import percentile_
+import numpy as np
 
 if __name__ == "__main__":
     if (len(av) < 2):
         print("USAGE: ./describe.py [dataset].csv")
         exit(1)
     df = pd.read_csv(av[1])
+    describe_(df)
+    print(df.describe(include = [np.number]))
+    exit(0)
     describe_(df)
