@@ -25,4 +25,3 @@ if __name__ == "__main__":
     describe_(df)
     print(df.describe(include = [np.number]))
     exit(0)
-    describe_(df)
