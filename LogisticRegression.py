@@ -24,7 +24,7 @@ class LogisticRegression:
             return None
     
     @staticmethod
-    def cost(y, ypred, eps=1e-15):
+    def cost(y: np.array, ypred: np.array, eps=1e-15):
         try:
             m = y.size
             lhs = y * (np.log(ypred))
