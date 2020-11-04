@@ -25,6 +25,6 @@ class LogisticRegression:
     
 
 if __name__ == "__main__":
-    lr = LogisticRegression([1,1])
-    x = np.array([-4,2,0])
+    lr = LogisticRegression([2,0.5])
+    x = np.array([[4], [7.16], [3.2], [9.37], [0.56]])
     print(lr.predict(x))
