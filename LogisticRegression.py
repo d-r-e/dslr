@@ -23,8 +23,26 @@ class LogisticRegression:
         except Exception:
             return None
     
+    @staticmethod
+    def cost(y, ypred, eps=1e-15):
+        try:
+            m = y.size
+            lhs = y * (np.log(ypred))
+            rhs = (1 - ypred)
+            rhs = np.log(rhs)
+            rhs = (1 - y) * np.log(1 - ypred)
+            j = -1/m * (lhs + rhs)
+            return float(j)
+        except Exception:
+            return None
+
 
 if __name__ == "__main__":
-    lr = LogisticRegression([2,0.5])
-    x = np.array([[4], [7.16], [3.2], [9.37], [0.56]])
-    print(lr.predict(x))
+    
+    y1 = np.array([1])
+    x1 = np.array([4])
+    theta1 = np.array([[2], [0.5]])
+    lr = LogisticRegression(theta1)
+    y_hat1 = lr.predict(x1)
+    cost = lr.cost(y1, y_hat1)
+    print(cost)
