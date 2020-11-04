@@ -1,6 +1,6 @@
 NAME = dslr
 
-DSLR = dslr/data.py dslr/math.py
+DSLR = dslr/data.py dslr/math.py LinearRegression.py
 
 NOTEBOOKS = histogram.ipynb  scatter_plot.ipynb pair_plot.ipynb logreg_train.ipynb
 
