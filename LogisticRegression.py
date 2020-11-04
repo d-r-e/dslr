@@ -24,7 +24,7 @@ class LogisticRegression:
             return None
     
     @staticmethod
-    def cost(y: np.array, ypred: np.array, eps=1e-15):
+    def loss(y: np.array, ypred: np.array, eps=1e-15):
         try:
             m = y.size
             lhs = y * (np.log(ypred))
@@ -44,5 +44,5 @@ if __name__ == "__main__":
     theta1 = np.array([[2], [0.5]])
     lr = LogisticRegression(theta1)
     y_hat1 = lr.predict(x1)
-    cost = lr.cost(y1, y_hat1)
-    print(cost)
+    loss = lr.loss(y1, y_hat1)
+    print(loss)
