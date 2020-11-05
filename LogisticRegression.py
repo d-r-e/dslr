@@ -54,7 +54,7 @@ class LogisticRegression:
                 j[n] = (1/m) * np.sum(self.predict(x) - y)
             else:
                 newx = np.c_[np.ones(x.shape[0]), x]
-                j[n] = (1/m) * ( np.sum( (self.predict(x) - y).T.dot(newx.T[n]).T))
+                j[n] = (1/m) * (np.sum((self.predict(x) - y).T.dot(newx.T[n]).T))
         return j
     
     
