@@ -36,25 +36,28 @@ class LogisticRegression:
             return None
 
     def log_gradient(self, x, y):
-        if (x.shape[0] is not y.shape[0]):
-            print("x.shape: " + str(x.shape))
-            print("y.shape: " + str(y.shape))
-            print("X and Y size mismatch")
+        try:
+            if (x.shape[0] is not y.shape[0]):
+                print("x.shape: " + str(x.shape))
+                print("y.shape: " + str(y.shape))
+                print("X and Y size mismatch")
+                return None
+            if (x.T.shape[0] != self.theta.shape[0] - 1):
+                print("x.shape: " + str(x.shape))
+                print("theta.shape: " + str(self.theta.shape))
+                print("X and thetas mismatch")
+                return None
+            m = len(x)
+            j = np.zeros(x.T.shape[0] + 1)
+            for n in range(0, len(j)):
+                if (n == 0):
+                    j[n] = (1/m) * np.sum(self.predict(x) - y)
+                else:
+                    z = np.c_[np.ones(x.shape[0]), x]
+                    j[n] = (np.sum((self.predict(x) - y).T.dot(z.T[n]).T)) / m
+            return j
+        except Exception:
             return None
-        if (x.T.shape[0] != self.theta.shape[0] - 1):
-            print("x.shape: " + str(x.shape))
-            print("theta.shape: " + str(self.theta.shape))
-            print("X and thetas mismatch")
-            return None
-        m = len(x)
-        j = np.zeros(x.T.shape[0] + 1)
-        for n in range(0, len(j)):
-            if (n == 0):
-                j[n] = (1/m) * np.sum(self.predict(x) - y)
-            else:
-                newx = np.c_[np.ones(x.shape[0]), x]
-                j[n] = (np.sum((self.predict(x) - y).T.dot(newx.T[n]).T)) / m
-        return j
 
 
 if __name__ == "__main__":
