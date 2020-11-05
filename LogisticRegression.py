@@ -49,47 +49,33 @@ class LogisticRegression:
             return None
         m = len(x)
         j = np.zeros(x.T.shape[0] + 1)
-        for n in range(len(j)):
+        for n in range(0,len(j)):
             if (n == 0):
-                print(self.predict(x))
-                j[n] = 1/m * np.sum(self.predict(x) - y.T)
-        print("J:")
-        print(j)
-        print()
+                j[n] = (1/m) * np.sum(self.predict(x) - y)
+            else:
+                newx = np.c_[np.ones(x.shape[0]), x]
+                j[n] = (1/m) * ( np.sum( (self.predict(x) - y).T.dot(newx.T[n]).T))
         return j
     
     
 
 
 if __name__ == "__main__":
-    x = np.array([4])
-    lr = LogisticRegression(np.array([[2],[0.5]]))
-    yprd = lr.predict(x)
-    print(yprd)
-
-    x2 = np.array([[4],[7.16], [3.2], [9.37],[0.56]])
-    lr = LogisticRegression(np.array([[2],[0.5]]))
-    ypred = lr.predict(x2)
-    print(ypred)
-
-    x3 = np.array([[0,2,3,4], [2,4,5,5], [1,3,2,7]])
-    lr = LogisticRegression(np.array([[-2.4], [-1.5], [0.3], [-1.4], [0.7]]))
-    ypred = lr.predict(x3)
-    print(ypred)
-    """ y1 = np.array([1])
+    y1 = np.array([1])
     x1 = np.array([4])
     theta1 = np.array([[2], [0.5]])
     lr = LogisticRegression(theta1)
     y_hat1 = lr.predict(x1)
     loss = lr.loss(y1, y_hat1)
-    lr.log_gradient(x1, y1)
+    j = lr.log_gradient(x1, y1)
+    print(j)
 
     y2 = np.array([[1],[0], [1], [0],[1]])
     x2 = np.array([[4],[7.16], [3.2], [9.37],[0.56]])
     lr = LogisticRegression(np.array([[2],[0.5]]))
     lr.log_gradient(x2, y2)
-
     y3 = np.array([[0],[1],[1]])
     x3 = np.array([[0,2,3,4], [2,4,5,5], [1,3,2,7]])
     lr = LogisticRegression(np.array([[-2.4], [-1.5], [0.3], [-1.4], [0.7]]))
-    lr.log_gradient(x3,y3) """
+    j = lr.log_gradient(x3,y3)
+    print(j)
