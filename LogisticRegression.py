@@ -5,10 +5,10 @@ import numpy as np
 
 class LogisticRegression:
 
-    def __init__(self, theta=None, c=100, lr=0.01):
+    def __init__(self, theta=None, c=1000, alpha=0.001):
         self.theta = np.array(theta)
-        self._c = c
-        self._lr = lr
+        self.c = c
+        self.alpha = alpha
 
     @staticmethod
     def sigmoid(X):
@@ -48,16 +48,30 @@ class LogisticRegression:
                 print("X and thetas mismatch")
                 return None
             m = len(x)
-            j = np.zeros(x.T.shape[0] + 1)
+            j = (1/m) * np.c_[np.ones(x.shape[0]), x].T.dot(self.predict(x) - y)
+            return j
+            """ j = np.zeros(x.T.shape[0] + 1)
             for n in range(0, len(j)):
                 if (n == 0):
                     j[n] = (1/m) * np.sum(self.predict(x) - y)
                 else:
                     z = np.c_[np.ones(x.shape[0]), x]
                     j[n] = (np.sum((self.predict(x) - y).T.dot(z.T[n]).T)) / m
-            return j
+            return j """
         except Exception:
             return None
+        
+    def fit_(self, x, y):
+        m = len(x)
+        X = np.c_[np.ones((len(x), 1)), x]
+        y_hat = self.predict_(x)
+        y = np.squeeze(y)
+        i = 0
+        while i < self.max_iter:
+            gradient = (1 / m) * (np.dot(np.transpose(X), (np.dot(X, self.theta) - y)))
+            self.theta = self.theta - self.alpha * gradient
+            i += 1
+        return self.theta
 
 
 if __name__ == "__main__":
