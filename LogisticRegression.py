@@ -16,12 +16,20 @@ class LogisticRegression:
 
     
     def predict(self, x: np.array):
-        try:
-            one = np.ones(x.size).reshape(-1,1)
-            x = np.concatenate((one, x.reshape(-1,1)), axis=1)
-            return self.sigmoid(x.dot(self.theta))
-        except Exception:
-            return None
+        #try:
+        one = np.ones(x.shape[0]).T
+        print("one:")
+        print(one)
+        print()
+        x = np.append(one.T, x, axis=0)
+        print("X:")
+        print(x)
+        print()
+        print("x shape: " + str(x.shape))
+        print("theta.shape: "+ str(self.theta.shape))
+        return self.sigmoid(x.T.dot(self.theta))
+        #except Exception:
+        #    return None
     
     @staticmethod
     def loss(y: np.array, ypred: np.array, eps=1e-15):
@@ -36,13 +44,55 @@ class LogisticRegression:
         except Exception:
             return None
 
+    def log_gradient(self, x, y):
+        if (x.shape[0] is not y.shape[0]):
+            print("x.shape: "+ str(x.shape))
+            print("y.shape: "+ str(y.shape))
+            print("X and Y size mismatch")
+            return None
+        if (x.T.shape[0] != self.theta.shape[0] - 1):
+            print("x.shape: "+ str(x.shape))
+            print("theta.shape: "+ str(self.theta.shape))
+            print("X and thetas mismatch")
+            return None
+        m = len(x)
+        j = np.zeros(x.T.shape[0] + 1)
+        for n in range(len(j)):
+            if (n == 0):
+                print(self.predict(x))
+                j[n] = 1/m * np.sum(self.predict(x) - y.T)
+        print("J:")
+        print(j)
+        print()
+        return j
+    
+    
+
 
 if __name__ == "__main__":
-    
-    y1 = np.array([1])
+    """ x = np.array([4])
+    lr = LogisticRegression(np.array([[2],[0.5]]))
+    yprd = lr.predict(x)
+    #print(yprd) """
+
+    x2 = np.array([[4],[7.16], [3.2], [9.37],[0.56]])
+    lr = LogisticRegression(np.array([[2],[0.5]]))
+    ypred = lr.predict(x2)
+    print(ypred)
+    """ y1 = np.array([1])
     x1 = np.array([4])
     theta1 = np.array([[2], [0.5]])
     lr = LogisticRegression(theta1)
     y_hat1 = lr.predict(x1)
     loss = lr.loss(y1, y_hat1)
-    print(loss)
+    lr.log_gradient(x1, y1)
+
+    y2 = np.array([[1],[0], [1], [0],[1]])
+    x2 = np.array([[4],[7.16], [3.2], [9.37],[0.56]])
+    lr = LogisticRegression(np.array([[2],[0.5]]))
+    lr.log_gradient(x2, y2)
+
+    y3 = np.array([[0],[1],[1]])
+    x3 = np.array([[0,2,3,4], [2,4,5,5], [1,3,2,7]])
+    lr = LogisticRegression(np.array([[-2.4], [-1.5], [0.3], [-1.4], [0.7]]))
+    lr.log_gradient(x3,y3) """
