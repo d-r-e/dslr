@@ -16,20 +16,12 @@ class LogisticRegression:
 
     
     def predict(self, x: np.array):
-        #try:
-        one = np.ones(x.shape[0]).T
-        print("one:")
-        print(one)
-        print()
-        x = np.append(one.T, x, axis=0)
-        print("X:")
-        print(x)
-        print()
-        print("x shape: " + str(x.shape))
-        print("theta.shape: "+ str(self.theta.shape))
-        return self.sigmoid(x.T.dot(self.theta))
-        #except Exception:
-        #    return None
+        try:
+            one = np.ones(x.shape[0])
+            x = np.c_[np.ones(x.shape[0]),x]
+            return self.sigmoid(x.dot(self.theta))
+        except Exception:
+            return None
     
     @staticmethod
     def loss(y: np.array, ypred: np.array, eps=1e-15):
@@ -70,14 +62,19 @@ class LogisticRegression:
 
 
 if __name__ == "__main__":
-    """ x = np.array([4])
+    x = np.array([4])
     lr = LogisticRegression(np.array([[2],[0.5]]))
     yprd = lr.predict(x)
-    #print(yprd) """
+    print(yprd)
 
     x2 = np.array([[4],[7.16], [3.2], [9.37],[0.56]])
     lr = LogisticRegression(np.array([[2],[0.5]]))
     ypred = lr.predict(x2)
+    print(ypred)
+
+    x3 = np.array([[0,2,3,4], [2,4,5,5], [1,3,2,7]])
+    lr = LogisticRegression(np.array([[-2.4], [-1.5], [0.3], [-1.4], [0.7]]))
+    ypred = lr.predict(x3)
     print(ypred)
     """ y1 = np.array([1])
     x1 = np.array([4])
