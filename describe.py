@@ -1,4 +1,5 @@
-#! /usr/bin/env python3
+#! /usr/bin/env python3  
+
 # *************************************************************************** #
 #                                                                             #
 #                                                         :::      ::::::::   #
@@ -21,6 +22,10 @@ if __name__ == "__main__":
     if (len(av) < 2):
         print("USAGE: ./describe.py [dataset].csv")
         exit(1)
-    df = pd.read_csv(av[1])
+    try:
+        df = pd.read_csv(av[1])
+    except Exception:
+        print("No such file")
+        exit(1)
     describe_(df)
     exit(0)

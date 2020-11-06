@@ -1,5 +1,5 @@
 import numpy as np
-
+from collections import Counter
 
 def count_(X):
     try:
@@ -59,3 +59,15 @@ def percentile_(p, X):
     a = X[int(left)] * (right - length)
     b = X[int(right)] * (length - left)
     return a + b
+
+def range_(X):
+    X = X[~np.isnan(X)]
+    return (max(X) - min(X))
+
+def mode_(X):
+    n = len(X) 
+    
+    data = Counter(X) 
+    get_mode = dict(data) 
+    mode = [k for k, v in get_mode.items() if v == max(list(data.values()))] 
+    return (max(mode))

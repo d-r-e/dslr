@@ -50,3 +50,19 @@ def describe_(df):
         m = mth.max_(df[col].values)
         print('{:>14.6f}'.format(m), end=sep)
     print()
+    print()
+    print(f'{"Range":9}', end=sep)
+    for col in df.columns:
+        m = mth.range_(df[col].values)
+        print('{:>14.6f}'.format(m), end=sep)
+    print()
+    print(f'{"Size":9}', end=sep)
+    for col in df.columns:
+        m = len(df[col].values)
+        print('{:>14.6f}'.format(m), end=sep)
+    print()
+    print(f'{"Mode":9}', end=sep)
+    for col in df.columns:
+        m = mth.mode_(df[col].values)
+        print('{:>14.6f}'.format(m), end=sep)
+    print()
