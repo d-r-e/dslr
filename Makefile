@@ -9,5 +9,5 @@ fclean:
 	rm -f houses.csv
 push: fclean
 	git add Makefile describe.py $(DSLR) $(NOTEBOOKS)
-	git commit -m "accouracy 98%!"
+	git commit -m "accouracy WITH TRUTH.csv 98%!"
 	git push origin main

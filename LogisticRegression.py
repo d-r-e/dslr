@@ -5,7 +5,7 @@ import numpy as np
 
 class LogisticRegression:
 
-    def __init__(self, theta=None, c=800000, alpha=0.00008):
+    def __init__(self, theta=None, c=5000, alpha=0.005):
         self.theta = np.array(theta)
         self.c = c
         self.alpha = alpha
@@ -47,7 +47,8 @@ class LogisticRegression:
                 print("X and thetas mismatch")
                 return None
             m = len(x)
-            j = (1/m) * np.c_[np.ones((len(x), 1)), x].T.dot(self.predict(x) - y)
+            xc = np.c_[np.ones((len(x), 1)), x].T
+            j = (1/m) * xc.dot(self.predict(x) - y)
             return j
             """ j = np.zeros(x.T.shape[0] + 1)
             for n in range(0, len(j)):
@@ -65,8 +66,10 @@ class LogisticRegression:
         X = np.c_[np.ones((len(x), 1)), x]
         y = np.squeeze(y)
         i = 0
+        m1 = 1/m
+        xt = np.transpose(X)
         while i < self.c:
-            gradient = (1 / m) * (np.dot(np.transpose(X), (np.dot(X, self.theta) - y)))
+            gradient = m1 * (np.dot(xt, (np.dot(X, self.theta) - y)))
             self.theta = self.theta - (self.alpha * gradient)
             i += 1
         return self.theta
