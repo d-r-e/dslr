@@ -8,5 +8,5 @@ $(NAME):
 
 push:
 	git add Makefile describe.py $(DSLR) $(NOTEBOOKS)
-	git commit -m "dslr"
+	git commit -m "accouracy 78%"
 	git push origin main
