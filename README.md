@@ -17,7 +17,7 @@ tantly, Professor McGonagall gives you a dusty spellbook. Fortunately for you, a
 "Digitalis!" and the book turned into a USB stick.
 
 
-# Chapter III
+# Chapter I
 
 # Objectives
 
@@ -41,7 +41,7 @@ Summarizing:
 - You will train a logistic regression that will solve classification problem.
 
 
-# Chapter IV
+# Chapter II
 
 # General instructions
 
@@ -53,14 +53,14 @@ Any functions that would do all the heavy-lifting for you (for example, using th
 describefunction of the _Pandas_ ) library will be considered cheating.
 
 
-# Chapter V
+# Chapter III
 
 # Mandatory part
 
 ```
 It is highly recommended to perform the steps in following order.
 ```
-### V.1 Data Analysis
+### III.1 Data Analysis
 
 ```
 We will see some basic steps of data exploration. Of course, these
@@ -99,7 +99,7 @@ language that you use. Of course, it is also forbidden to use the
 describe library or any function that looks similar(more or less) to
 it from another library.
 ```
-### V.2 Data Visualization
+### III.2 Data Visualization
 
 Data visualization is a powerful tool for a data scientist. It allows you to make insights
 and develop an intuition of what your data looks like. Visualizing your data also allows
@@ -109,7 +109,7 @@ In this section, you are asked to create a set of scripts, each using a particul
 alization method to answer a question. There is not necessarily a single answer to the
 question.
 
-#### V.2.1 Histogram
+#### III.2.1 Histogram
 
 Make a script calledhistogram.[extension]which displays a _histogram_ answering the
 next question :
@@ -117,7 +117,7 @@ next question :
 ```
 Which Hogwarts course has a homogeneous score distribution between all four houses?
 ```
-#### V.2.2 Scatter plot
+#### VIII.2.2 Scatter plot
 
 Make a script calledscatter_plot.[extension]which displays a _scatter plot_ answering
 the next question :
@@ -125,7 +125,7 @@ the next question :
 ```
 What are the two features that are similar?
 ```
-#### V.2.3 Pair plot
+#### III.2.3 Pair plot
 
 Make a script calledpair_plot.[extension]which displays a _pair plot_ or _scatter plot
 matrix_ (according to the library that you are using).
@@ -136,7 +136,7 @@ From this visualization, what features are you going to use for your logistic re
 
 Datascience X Logistic Regression Harry Potter and a Data Scientist
 
-### V.3 Logistic Regression
+### III.3 Logistic Regression
 
 You arrive at the last part: code your Magic Hat. To do this, you have to perform a
 multi-classifier using a logistic regression _one-vs-all_.
