@@ -5,7 +5,7 @@ import numpy as np
 
 class LogisticRegression:
 
-    def __init__(self, theta=None, c=5000, alpha=0.005):
+    def __init__(self, theta=None, c=50000, alpha=0.0005):
         self.theta = np.array(theta)
         self.c = c
         self.alpha = alpha
