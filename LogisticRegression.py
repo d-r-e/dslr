@@ -11,6 +11,13 @@ class LogisticRegression:
         self.alpha = alpha
 
     @staticmethod
+    def normalize(df):
+        df_norm = df.copy()
+        for column in df_norm.columns:
+            df_norm[column] = (df_norm[column] - df_norm[column].min()) / (df_norm[column].max() - df_norm[column].min())
+        return df_norm
+
+    @staticmethod
     def sigmoid(X):
         return np.array(1 / (1 + np.exp(-X)))
 
