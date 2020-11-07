@@ -1,4 +1,6 @@
-# Introduction
+# Data Science: Logistic Regression
+
+## Introduction
 
 On no! Since its creation, the famous school of wizards, Hogwarts, had never known such
 an offense. The forces of evil have bewitched the Sorting Hat. It no longer responds, and
@@ -17,9 +19,9 @@ tantly, Professor McGonagall gives you a dusty spellbook. Fortunately for you, a
 "Digitalis!" and the book turned into a USB stick.
 
 
-# Chapter I
+## Chapter I
 
-# Objectives
+## Objectives
 
 In this project _DataScience x Logistic Regression_ , you will continue your exploration of
 _Machine Learning_ by discovering different tools.
